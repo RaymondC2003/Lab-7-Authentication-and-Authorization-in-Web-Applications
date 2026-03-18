@@ -1,0 +1,27 @@
+<section class="auth-wrapper">
+  <div class="auth-card">
+    <div class="hero-badge">Create Account</div>
+    <h2>Register for SecureDocs</h2>
+    <p class="subtext">Create a protected account to manage your personal documents securely.</p>
+
+    <form (ngSubmit)="submit()" class="styled-form">
+      <label>Username</label>
+      <input [(ngModel)]="form.username" name="username" required />
+
+      <label>Email</label>
+      <input [(ngModel)]="form.email" name="email" type="email" required />
+
+      <label>Password</label>
+      <input [(ngModel)]="form.password" name="password" type="password" required />
+
+      <button class="primary-btn" type="submit">Register</button>
+    </form>
+
+    <p class="error-banner" *ngIf="error">{{ error }}</p>
+
+    <p class="switch-link">
+      Already have an account?
+      <a routerLink="/login">Sign in</a>
+    </p>
+  </div>
+</section>

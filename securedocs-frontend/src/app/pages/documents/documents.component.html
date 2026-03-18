@@ -1,0 +1,59 @@
+<section class="page-header">
+  <div>
+    <h2>My Documents</h2>
+    <p>Manage, edit, and protect your private document records.</p>
+  </div>
+  <a routerLink="/documents/new" class="primary-btn inline-btn"
+    >Create New Document</a
+  >
+</section>
+
+<p class="error-banner" *ngIf="error">{{ error }}</p>
+
+<div class="empty-state glass-card" *ngIf="documents.length === 0">
+  <h3>No documents yet</h3>
+  <p>Create your first protected document to test secure CRUD operations.</p>
+</div>
+
+<div class="documents-grid" *ngIf="documents.length > 0">
+  <article class="doc-card" *ngFor="let doc of documents">
+    <div class="doc-card-top">
+      <div class="doc-icon">D</div>
+      <div>
+        <h3>{{ doc.title }}</h3>
+        <p>{{ doc.description }}</p>
+      </div>
+    </div>
+
+    <div class="doc-meta">
+      <span>Created: {{ doc.createdAt }}</span>
+      <span>Updated: {{ doc.updatedAt }}</span>
+    </div>
+
+    <div class="doc-actions">
+      <button class="secondary-btn" (click)="editDocument(doc.documentId)">
+        Edit
+      </button>
+      <button class="danger-btn" (click)="deleteDocument(doc.documentId)">
+        Delete
+      </button>
+    </div>
+  </article>
+</div>
+
+<div class="last-visited-banner" *ngIf="lastVisited; else noHistory">
+  <span class="last-visited-icon">🕐</span>
+  <span>
+    Last viewed: <strong>{{ lastVisited.docTitle }}</strong>
+    &nbsp;&mdash;&nbsp;
+    <span class="last-visited-time">{{
+      formatVisitedAt(lastVisited.visitedAt)
+    }}</span>
+  </span>
+</div>
+
+<ng-template #noHistory>
+  <p class="last-visited-none">
+    No document review history yet. Open a document to track your last visit.
+  </p>
+</ng-template>

@@ -1,0 +1,20 @@
+<section class="form-page">
+  <div class="glass-card form-card">
+    <h2>{{ isEditMode ? 'Edit Document' : 'Create Document' }}</h2>
+    <p>Only authenticated and authorized users can access this form.</p>
+
+    <form (ngSubmit)="submit()" class="styled-form">
+      <label>Title</label>
+      <input [(ngModel)]="form.title" name="title" required />
+
+      <label>Description</label>
+      <textarea [(ngModel)]="form.description" name="description" rows="6" required></textarea>
+
+      <button class="primary-btn" type="submit">
+        {{ isEditMode ? 'Update Document' : 'Create Document' }}
+      </button>
+    </form>
+
+    <p class="error-banner" *ngIf="error">{{ error }}</p>
+  </div>
+</section>

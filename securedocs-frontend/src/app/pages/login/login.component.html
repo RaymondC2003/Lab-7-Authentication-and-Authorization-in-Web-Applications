@@ -1,0 +1,24 @@
+<section class="auth-wrapper">
+  <div class="auth-card">
+    <div class="hero-badge">Welcome Back</div>
+    <h2>Sign in to SecureDocs</h2>
+    <p class="subtext">Access your protected documents through secure session-based authentication.</p>
+
+    <form (ngSubmit)="submit()" class="styled-form">
+      <label>Username or Email</label>
+      <input [(ngModel)]="form.identifier" name="identifier" required />
+
+      <label>Password</label>
+      <input [(ngModel)]="form.password" name="password" type="password" required />
+
+      <button class="primary-btn" type="submit">Login</button>
+    </form>
+
+    <p class="error-banner" *ngIf="error">{{ error }}</p>
+
+    <p class="switch-link">
+      No account?
+      <a routerLink="/register">Create one now</a>
+    </p>
+  </div>
+</section>

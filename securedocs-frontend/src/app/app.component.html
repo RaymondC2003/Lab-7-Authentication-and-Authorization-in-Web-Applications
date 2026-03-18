@@ -1,0 +1,22 @@
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">S</div>
+      <div>
+        <h1>SecureDocs</h1>
+        <p>Authentication and Authorization Lab</p>
+      </div>
+    </div>
+
+    <nav class="nav-links" *ngIf="authService.user()">
+      <a routerLink="/profile" routerLinkActive="active-link">Profile</a>
+      <a routerLink="/documents" routerLinkActive="active-link">Documents</a>
+      <a routerLink="/documents/new" routerLinkActive="active-link">New Document</a>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <router-outlet></router-outlet>
+  </main>
+</div>
